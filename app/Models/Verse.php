@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * 
@@ -26,6 +27,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Verse whereText($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Verse whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Verse whereVerseNumber($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\word> $word
+ * @property-read int|null $word_count
  * @mixin \Eloquent
  */
 class Verse extends Model {
@@ -39,5 +42,8 @@ class Verse extends Model {
 
     public function surah(): BelongsTo {
         return $this->belongsTo(Surah::class);
+    }
+    public function word(): HasMany {
+        return $this->hasMany(Word::class);
     }
 }

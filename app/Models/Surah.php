@@ -29,6 +29,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Surah whereTotalVerses($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Surah whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Surah whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\word> $word
+ * @property-read int|null $word_count
  * @mixin \Eloquent
  */
 class Surah extends Model {
@@ -43,5 +45,8 @@ class Surah extends Model {
 
     public function verses(): HasMany {
         return $this->hasMany(Verse::class);
+    }
+    public function word(): HasMany {
+        return $this->hasMany(Word::class);
     }
 }
