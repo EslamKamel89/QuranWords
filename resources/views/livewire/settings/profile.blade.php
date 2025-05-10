@@ -13,8 +13,7 @@ new class extends Component {
     /**
      * Mount the component.
      */
-    public function mount(): void
-    {
+    public function mount(): void {
         $this->name = Auth::user()->name;
         $this->email = Auth::user()->email;
     }
@@ -22,8 +21,7 @@ new class extends Component {
     /**
      * Update the profile information for the currently authenticated user.
      */
-    public function updateProfileInformation(): void
-    {
+    public function updateProfileInformation(): void {
         $user = Auth::user();
 
         $validated = $this->validate([
@@ -53,8 +51,7 @@ new class extends Component {
     /**
      * Send an email verification notification to the current user.
      */
-    public function resendVerificationNotification(): void
-    {
+    public function resendVerificationNotification(): void {
         $user = Auth::user();
 
         if ($user->hasVerifiedEmail()) {
@@ -69,32 +66,32 @@ new class extends Component {
     }
 }; ?>
 
-<section class="w-full">
+<section class="w-full" dir="ltr">
     @include('partials.settings-heading')
 
     <x-settings.layout :heading="__('Profile')" :subheading="__('Update your name and email address')">
-        <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
+        <form wire:submit="updateProfileInformation" class="w-full my-6 space-y-6">
             <flux:input wire:model="name" :label="__('Name')" type="text" required autofocus autocomplete="name" />
 
             <div>
                 <flux:input wire:model="email" :label="__('Email')" type="email" required autocomplete="email" />
 
                 @if (auth()->user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail &&! auth()->user()->hasVerifiedEmail())
-                    <div>
-                        <flux:text class="mt-4">
-                            {{ __('Your email address is unverified.') }}
+                <div>
+                    <flux:text class="mt-4">
+                        {{ __('Your email address is unverified.') }}
 
-                            <flux:link class="text-sm cursor-pointer" wire:click.prevent="resendVerificationNotification">
-                                {{ __('Click here to re-send the verification email.') }}
-                            </flux:link>
-                        </flux:text>
+                        <flux:link class="text-sm cursor-pointer" wire:click.prevent="resendVerificationNotification">
+                            {{ __('Click here to re-send the verification email.') }}
+                        </flux:link>
+                    </flux:text>
 
-                        @if (session('status') === 'verification-link-sent')
-                            <flux:text class="mt-2 font-medium !dark:text-green-400 !text-green-600">
-                                {{ __('A new verification link has been sent to your email address.') }}
-                            </flux:text>
-                        @endif
-                    </div>
+                    @if (session('status') === 'verification-link-sent')
+                    <flux:text class="mt-2 font-medium !dark:text-green-400 !text-green-600">
+                        {{ __('A new verification link has been sent to your email address.') }}
+                    </flux:text>
+                    @endif
+                </div>
                 @endif
             </div>
 

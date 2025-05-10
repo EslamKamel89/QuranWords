@@ -14,8 +14,7 @@ new class extends Component {
     /**
      * Update the password for the currently authenticated user.
      */
-    public function updatePassword(): void
-    {
+    public function updatePassword(): void {
         try {
             $validated = $this->validate([
                 'current_password' => ['required', 'string', 'current_password'],
@@ -37,7 +36,7 @@ new class extends Component {
     }
 }; ?>
 
-<section class="w-full">
+<section class="w-full" dir="ltr">
     @include('partials.settings-heading')
 
     <x-settings.layout :heading="__('Update password')" :subheading="__('Ensure your account is using a long, random password to stay secure')">
@@ -47,22 +46,19 @@ new class extends Component {
                 :label="__('Current password')"
                 type="password"
                 required
-                autocomplete="current-password"
-            />
+                autocomplete="current-password" />
             <flux:input
                 wire:model="password"
                 :label="__('New password')"
                 type="password"
                 required
-                autocomplete="new-password"
-            />
+                autocomplete="new-password" />
             <flux:input
                 wire:model="password_confirmation"
                 :label="__('Confirm Password')"
                 type="password"
                 required
-                autocomplete="new-password"
-            />
+                autocomplete="new-password" />
 
             <div class="flex items-center gap-4">
                 <div class="flex items-center justify-end">
