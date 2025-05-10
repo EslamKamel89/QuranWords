@@ -23,6 +23,8 @@ Route::middleware(['auth'])->group(function () {
         ->name('dashboard');
     Volt::route('/admin/roots', 'admin.roots.index')
         ->name('roots.index');
+    Volt::route('/admin/roots/create', 'admin.roots.create')
+        ->name('roots.create');
 });
 
 require __DIR__ . '/auth.php';

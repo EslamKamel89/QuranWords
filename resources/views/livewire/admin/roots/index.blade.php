@@ -14,7 +14,7 @@ new class extends Component {
         $root = Root::findOrFail($id);
         $root->delete();
 
-        session()->flash('message', 'تم حذف الجذر بنجاح.');
+        session()->flash('message', 'تم حذف الكلمة بنجاح.');
     }
 
     public function with() {
@@ -32,7 +32,7 @@ new class extends Component {
 <div class="px-4 py-8 mx-auto overflow-auto max-w-7xl">
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-2xl font-bold text-gray-800 dark:text-white"> الكلمات الرئيسية </h1>
-        <a href="" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <a href="{{ route('roots.create') }}" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             إضافة كلمة رئيسية
         </a>
     </div>
@@ -44,6 +44,11 @@ new class extends Component {
 
     <!-- Table -->
     <div class="rounded-lg shadow g-white dark:bg-gray-800">
+        @if (session()->has('message'))
+        <div class="p-4 mt-4 text-green-700 bg-green-100 border border-green-200 rounded-md dark:bg-green-900 dark:text-green-200 dark:border-green-800">
+            {{ session('message') }}
+        </div>
+        @endif
         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
             <thead class="bg-gray-50 dark:bg-gray-700">
                 <tr>
@@ -82,9 +87,5 @@ new class extends Component {
         {{ $roots->links() }}
     </div>
 
-    @if (session()->has('message'))
-    <div class="p-4 mt-4 text-green-700 bg-green-100 border border-green-200 rounded-md dark:bg-green-900 dark:text-green-200 dark:border-green-800">
-        {{ session('message') }}
-    </div>
-    @endif
+
 </div>
