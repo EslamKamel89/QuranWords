@@ -39,7 +39,7 @@ new class extends Component {
 
     <!-- Search -->
     <div class="mb-6">
-        <input type="text" wire:model.live="search" placeholder=" الكلمات الرئيسية..." class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm dark:bg-gray-800 dark:border-gray-600 dark:text-white focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <input type="text" wire:model.live.debounce.750="search" placeholder=" الكلمات الرئيسية..." class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm dark:bg-gray-800 dark:border-gray-600 dark:text-white focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
     </div>
 
     <!-- Table -->

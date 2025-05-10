@@ -1,9 +1,20 @@
 <?php
 
 use Livewire\Volt\Component;
+use App\Models\Root;
+use App\Models\Word;
+use App\Models\Verse;
+use App\Models\Surah;
 
 new class extends Component {
-    //
+    public function with() {
+        return [
+            'roots' => Root::count(),
+            'words' => Word::count(),
+            'verses' => Verse::count(),
+            'surahs' => Surah::count(),
+        ];
+    }
 }; ?>
 
 <div>
@@ -17,7 +28,7 @@ new class extends Component {
                 <div class="flex items-center justify-between p-6 bg-white rounded-lg shadow dark:bg-gray-800">
                     <div>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">عدد السور</p>
-                        <p class="mt-1 text-2xl font-semibold text-gray-900 dark:text-white">114</p>
+                        <p class="mt-1 text-2xl font-semibold text-gray-900 dark:text-white">{{ $surahs }}</p>
                     </div>
                     <div class="text-indigo-500">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -30,7 +41,7 @@ new class extends Component {
                 <div class="flex items-center justify-between p-6 bg-white rounded-lg shadow dark:bg-gray-800">
                     <div>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">عدد الآيات</p>
-                        <p class="mt-1 text-2xl font-semibold text-gray-900 dark:text-white">6,236</p>
+                        <p class="mt-1 text-2xl font-semibold text-gray-900 dark:text-white">{{ $verses }}</p>
                     </div>
                     <div class="text-green-500">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -43,7 +54,7 @@ new class extends Component {
                 <div class="flex items-center justify-between p-6 bg-white rounded-lg shadow dark:bg-gray-800">
                     <div>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">عدد الكلمات</p>
-                        <p class="mt-1 text-2xl font-semibold text-gray-900 dark:text-white">105,234</p>
+                        <p class="mt-1 text-2xl font-semibold text-gray-900 dark:text-white">{{ $words }}</p>
                     </div>
                     <div class="text-blue-500">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -55,8 +66,8 @@ new class extends Component {
                 <!-- Total Roots -->
                 <div class="flex items-center justify-between p-6 bg-white rounded-lg shadow dark:bg-gray-800">
                     <div>
-                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">عدد الجذور</p>
-                        <p class="mt-1 text-2xl font-semibold text-gray-900 dark:text-white">2,400</p>
+                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">عدد الكلمات الرئيسية</p>
+                        <p class="mt-1 text-2xl font-semibold text-gray-900 dark:text-white">{{ $roots }}</p>
                     </div>
                     <div class="text-yellow-500">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
