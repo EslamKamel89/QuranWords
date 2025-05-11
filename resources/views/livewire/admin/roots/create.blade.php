@@ -1,9 +1,12 @@
 <?php
 
+use App\Helpers\pr;
 use Livewire\Volt\Component;
 use App\Models\Root;
+use App\Models\Surah;
+use App\Models\Verse;
 use App\Models\Word;
-
+use Livewire\Attributes\On;
 
 new class extends Component {
     public $origin_word;
@@ -48,6 +51,21 @@ new class extends Component {
 
         return redirect()->route('roots.index');
     }
+
+    #[On('create-root-surah-verse-selector')]
+    public function surahVerseListener(array $payload) {
+        $index = $payload['meta']['index'] ?? null;
+        $surahId = $payload['selectedVerse']['surah_id'] ?? null;
+        $verseId = $payload['selectedVerse']['id'] ?? null;
+        $this->words[$index]['surah_id'] = $surahId;
+        $this->words[$index]['verse_id'] = $verseId;
+    }
+
+    public function with() {
+        return [
+            'surahs' => Surah::Select(['id', 'name'])->get(),
+        ];
+    }
 }; ?>
 
 <div class="w-full px-4 py-8 mx-auto">
@@ -58,7 +76,11 @@ new class extends Component {
         {{ session('message') }}
     </div>
     @endif
-
+    @error('words')
+    <div class="p-4 mb-6 text-sm text-red-700 bg-green-100 border border-red-200 rounded-md dark:bg-red-900 dark:text-red-200 dark:border-red-800">
+        يجب إدخال كلمة واحدة على الأقل من الكلمات التابعة
+    </div>
+    @enderror
     <form wire:submit.prevent="save" class="space-y-6">
         <!-- Origin Word -->
         <div>
@@ -97,6 +119,9 @@ new class extends Component {
                             <input type="text" wire:model="words.{{ $index }}.word_tashkeel" class="block w-full px-4 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white sm:text-sm">
                             @error("words.$index.word_tashkeel") <span class="text-sm text-red-600">{{ $message }}</span> @enderror
                         </div>
+                    </div>
+                    <div>
+                        <livewire:admin.shared.surah-verse-selector event-name="create-root-surah-verse-selector" :surahs="$surahs" :meta="['index' => $index]" :key="'word-repeater'.$index" />
                     </div>
                     <div class="flex justify-end mt-2">
                         <button type="button" wire:click="removeWord({{ $index }})" class="text-sm text-red-600 hover:text-red-800">
