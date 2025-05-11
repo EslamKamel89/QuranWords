@@ -33,7 +33,7 @@ new class extends Component {
 <div class="px-4 py-8 mx-auto overflow-auto max-w-7xl">
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-2xl font-bold text-gray-800 dark:text-white"> الكلمات الرئيسية </h1>
-        <a href="{{ route('roots.create') }}" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <a wire:navigate href="{{ route('roots.create') }}" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             إضافة كلمة رئيسية
         </a>
     </div>
@@ -66,7 +66,7 @@ new class extends Component {
                     <td class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap dark:text-gray-200">{{ $root->origin_word }}</td>
                     <td class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap dark:text-gray-200">{{ $root->name }}</td>
                     <td class="px-6 py-4 space-x-2 space-x-reverse text-sm font-medium whitespace-nowrap">
-                        <a href="{{ route('roots.edit' , ['root'=>$root->id]) }}" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <a wire:navigate href="{{ route('roots.edit' , ['root'=>$root->id]) }}" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                             تعديل
                         </a>
                         <button wire:click="delete({{ $root->id }})" wire:confirm="هل أنت متأكد من أنك تريد حذف هذا الجذر؟" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">

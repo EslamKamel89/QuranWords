@@ -41,14 +41,15 @@ new class extends Component {
             'words.*.word' => 'required|string|max:255',
             'words.*.word_tashkeel' => 'nullable|string|max:255',
         ]);
-
-        $root = Root::create([
+        $this->root->words()->delete();
+        $this->root->update([
             'origin_word' => $this->origin_word,
             'name' => $this->name,
         ]);
 
+
         foreach ($this->words as $wordData) {
-            $root->words()->create($wordData);
+            $this->root->words()->create($wordData);
         }
 
         session()->flash('message', 'تم حفظ الكلمات الرئيسية مع الكلمات بنجاح');
@@ -56,7 +57,7 @@ new class extends Component {
         return redirect()->route('roots.index');
     }
 
-    #[On('create-root-surah-verse-selector')]
+    #[On('edit-root-surah-verse-selector')]
     public function surahVerseListener(array $payload) {
         $index = $payload['meta']['index'] ?? null;
         $surahId = $payload['selectedVerse']['surah_id'] ?? null;
@@ -125,7 +126,7 @@ new class extends Component {
                         </div>
                     </div>
                     <div>
-                        <livewire:admin.shared.surah-verse-selector event-name="create-root-surah-verse-selector" :surahs="$surahs" :meta="[
+                        <livewire:admin.shared.surah-verse-selector event-name="edit-root-surah-verse-selector" :surahs="$surahs" :meta="[
                         'index' => $index ,
                         'init' => ['word'=>$words[$index]]
                         ]" :key="'word-repeater'.$index" />
@@ -143,7 +144,7 @@ new class extends Component {
         <!-- Submit Button -->
         <div class="pt-5">
             <button type="submit" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                حفظ الكلمات الرئيسية والكلمات التابعة
+                تعديل الكلمات الرئيسية والكلمات التابعة
             </button>
         </div>
     </form>
