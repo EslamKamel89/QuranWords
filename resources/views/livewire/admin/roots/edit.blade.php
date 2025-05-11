@@ -2,14 +2,13 @@
 
 use App\Helpers\pr;
 use Livewire\Volt\Component;
-use App\Models\Root;
 use App\Models\Surah;
 use App\Models\Verse;
 use App\Models\Word;
 use Livewire\Attributes\On;
 
 new class extends Component {
-    public Root $root;
+    public \App\Models\Root $root;
     public $origin_word;
     public $name;
     public $words = [];
