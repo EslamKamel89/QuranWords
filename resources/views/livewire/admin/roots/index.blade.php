@@ -21,6 +21,7 @@ new class extends Component {
         $roots = Root::query()
             ->where('origin_word', 'like', '%' . $this->search . '%')
             ->orWhere('name', 'like', '%' . $this->search . '%')
+            ->latest()
             ->paginate(10);
 
         return [
