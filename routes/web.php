@@ -25,6 +25,8 @@ Route::middleware(['auth'])->group(function () {
         ->name('roots.index');
     Volt::route('/admin/roots/create', 'admin.roots.create')
         ->name('roots.create');
+    Volt::route('/admin/roots/{root}/edit', 'admin.roots.edit')
+        ->name('roots.edit');
 });
 
 require __DIR__ . '/auth.php';
