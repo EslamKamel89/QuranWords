@@ -125,7 +125,10 @@ new class extends Component {
                         </div>
                     </div>
                     <div>
-                        <livewire:admin.shared.surah-verse-selector event-name="create-root-surah-verse-selector" :surahs="$surahs" :meta="['index' => $index]" :key="'word-repeater'.$index" />
+                        <livewire:admin.shared.surah-verse-selector event-name="create-root-surah-verse-selector" :surahs="$surahs" :meta="[
+                        'index' => $index ,
+                        'init' => ['word'=>$words[$index]]
+                        ]" :key="'word-repeater'.$index" />
                     </div>
                     <div class="flex justify-end mt-2">
                         <button type="button" wire:click="removeWord({{ $index }})" class="text-sm text-red-600 hover:text-red-800">
