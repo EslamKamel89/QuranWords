@@ -13,7 +13,32 @@
 
 namespace App\Models{
 /**
+ * 
  *
+ * @property int $id
+ * @property string $origin_word
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\word> $words
+ * @property-read int|null $words_count
+ * @method static \Database\Factories\rootFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|root newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|root newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|root query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereOriginWord($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	class Root extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
  *
  * @property int $id
  * @property string $name
@@ -35,16 +60,16 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Surah whereTotalVerses($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Surah whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Surah whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\word> $word
  * @property-read int|null $word_count
+ * @mixin \Eloquent
  */
 	class Surah extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
- *
+ * 
  *
  * @property int $id
  * @property string $name
@@ -75,7 +100,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- *
+ * 
  *
  * @property int $id
  * @property int $surah_id
@@ -94,39 +119,43 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Verse whereText($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Verse whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Verse whereVerseNumber($value)
- * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\word> $word
  * @property-read int|null $word_count
+ * @mixin \Eloquent
  */
 	class Verse extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
+ * 
  *
- *
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\word> $words
- * @property-read int|null $words_count
- * @method static \Database\Factories\rootFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder<static>|root newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|root newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|root query()
- */
-	class root extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- *
- *
- * @property-read \App\Models\root|null $root
+ * @property int $id
+ * @property int $root_id
+ * @property int|null $verse_id
+ * @property int|null $surah_id
+ * @property string $word
+ * @property string $word_tashkeel
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Root $Root
  * @property-read \App\Models\Surah|null $surah
  * @property-read \App\Models\Verse|null $verse
  * @method static \Database\Factories\wordFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|word newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|word newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|word query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereRootId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereSurahId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereVerseId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereWord($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereWordTashkeel($value)
+ * @property-read \App\Models\root $root
+ * @mixin \Eloquent
  */
-	class word extends \Eloquent {}
+	class Word extends \Eloquent {}
 }
 

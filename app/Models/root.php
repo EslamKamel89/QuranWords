@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class root extends Model {
+class Root extends Model {
     /** @use HasFactory<\Database\Factories\RootFactory> */
     use HasFactory;
     protected $fillable = [

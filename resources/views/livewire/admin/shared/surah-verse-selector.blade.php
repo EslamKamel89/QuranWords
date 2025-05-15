@@ -18,10 +18,10 @@ new class extends Component {
     public function mount() {
         $word =    $this->meta['init']['word'] ?? null;
         if ($word) {
-            $this->selectedSurah = Surah::findOrFail($word['surah_id']);
-            $this->selectedVerse = Verse::findOrFail($word['verse_id']);
-            $this->searchSurah = $this->selectedSurah->name;
-            $this->searchVerse = $this->selectedVerse->verse_number;
+            $this->selectedSurah = Surah::find($word['surah_id'] ?? null);
+            $this->selectedVerse = Verse::find($word['verse_id'] ?? null);
+            $this->searchSurah = $this->selectedSurah?->name ?? '';
+            $this->searchVerse = $this->selectedVerse?->verse_number ?? '';
         }
     }
     public function with() {

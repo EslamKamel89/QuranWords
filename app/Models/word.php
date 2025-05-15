@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $word_tashkeel
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\root $root
+ * @property-read \App\Models\Root $Root
  * @property-read \App\Models\Surah|null $surah
  * @property-read \App\Models\Verse|null $verse
  * @method static \Database\Factories\wordFactory factory($count = null, $state = [])
@@ -32,9 +32,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereVerseId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereWord($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereWordTashkeel($value)
+ * @property-read \App\Models\root $root
  * @mixin \Eloquent
  */
-class word extends Model {
+class Word extends Model {
     /** @use HasFactory<\Database\Factories\WordFactory> */
     use HasFactory;
     protected $fillable = [

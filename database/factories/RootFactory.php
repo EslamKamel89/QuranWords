@@ -5,17 +5,15 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\root>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Root>
  */
-class RootFactory extends Factory
-{
+class RootFactory extends Factory {
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
-    {
+    public function definition(): array {
         return [
             //
         ];
