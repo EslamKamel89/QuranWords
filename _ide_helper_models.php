@@ -32,6 +32,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereOriginWord($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Root search(string $search)
  */
 	class Root extends \Eloquent {}
 }

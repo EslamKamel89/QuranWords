@@ -19,6 +19,9 @@ class RootsTableSeeder extends Seeder {
                     ['word' => 'كتب', 'word_tashkeel' => 'كَتَبَ'],
                     ['word' => 'كاتب', 'word_tashkeel' => 'كَاتِب'],
                     ['word' => 'مكتب', 'word_tashkeel' => 'مَكْتَب'],
+                    ['word' => 'مكتب', 'word_tashkeel' => 'مَكْتَب'],
+                    ['word' => 'مكتب', 'word_tashkeel' => 'مَكْتَب'],
+                    ['word' => 'مكتب', 'word_tashkeel' => 'مَكْتَب'],
                 ],
             ],
             [
@@ -26,6 +29,9 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'المعرفة والتعليم',
                 'words' => [
                     ['word' => 'علم', 'word_tashkeel' => 'عَلِمَ'],
+                    ['word' => 'عالم', 'word_tashkeel' => 'عَالِم'],
+                    ['word' => 'عالم', 'word_tashkeel' => 'عَالِم'],
+                    ['word' => 'عالم', 'word_tashkeel' => 'عَالِم'],
                     ['word' => 'عالم', 'word_tashkeel' => 'عَالِم'],
                     ['word' => 'تعليم', 'word_tashkeel' => 'تَعْلِيم'],
                 ],
@@ -36,6 +42,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'قران', 'word_tashkeel' => 'قُرْآن'],
                     ['word' => 'قرأ', 'word_tashkeel' => 'قَرَأَ'],
+                    ['word' => 'قرأ', 'word_tashkeel' => 'قَرَأَ'],
+                    ['word' => 'قرأ', 'word_tashkeel' => 'قَرَأَ'],
+                    ['word' => 'قرأ', 'word_tashkeel' => 'قَرَأَ'],
                     ['word' => 'قارئ', 'word_tashkeel' => 'قَارِئ'],
                 ],
             ],
@@ -44,6 +53,9 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'الذكر والاستدعاء',
                 'words' => [
                     ['word' => 'اسم', 'word_tashkeel' => 'اسْمٌ'],
+                    ['word' => 'دعا', 'word_tashkeel' => 'دَعَا'],
+                    ['word' => 'دعا', 'word_tashkeel' => 'دَعَا'],
+                    ['word' => 'دعا', 'word_tashkeel' => 'دَعَا'],
                     ['word' => 'دعا', 'word_tashkeel' => 'دَعَا'],
                     ['word' => 'دعاء', 'word_tashkeel' => 'دُعَاء'],
                 ],
@@ -54,6 +66,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'صلاة', 'word_tashkeel' => 'صَلَاة'],
                     ['word' => 'مساجد', 'word_tashkeel' => 'مَسَاجِد'],
+                    ['word' => 'مساجد', 'word_tashkeel' => 'مَسَاجِد'],
+                    ['word' => 'مساجد', 'word_tashkeel' => 'مَسَاجِد'],
+                    ['word' => 'مساجد', 'word_tashkeel' => 'مَسَاجِد'],
                     ['word' => 'راكع', 'word_tashkeel' => 'رَاكِع'],
                 ],
             ],
@@ -62,6 +77,9 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'الطهارة والزكاة',
                 'words' => [
                     ['word' => 'زكاة', 'word_tashkeel' => 'زَكَاة'],
+                    ['word' => 'طهور', 'word_tashkeel' => 'طُهُور'],
+                    ['word' => 'طهور', 'word_tashkeel' => 'طُهُور'],
+                    ['word' => 'طهور', 'word_tashkeel' => 'طُهُور'],
                     ['word' => 'طهور', 'word_tashkeel' => 'طُهُور'],
                     ['word' => 'طاهر', 'word_tashkeel' => 'طَاهِر'],
                 ],
@@ -72,6 +90,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'صيام', 'word_tashkeel' => 'صِيَام'],
                     ['word' => 'صائم', 'word_tashkeel' => 'صَائِم'],
+                    ['word' => 'صائم', 'word_tashkeel' => 'صَائِم'],
+                    ['word' => 'صائم', 'word_tashkeel' => 'صَائِم'],
+                    ['word' => 'صائم', 'word_tashkeel' => 'صَائِم'],
                     ['word' => 'رمضان', 'word_tashkeel' => 'رَمَضَان'],
                 ],
             ],
@@ -80,6 +101,9 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'زيارة البيت الحرام',
                 'words' => [
                     ['word' => 'حج', 'word_tashkeel' => 'حَجَّ'],
+                    ['word' => 'حاج', 'word_tashkeel' => 'حَاجٌ'],
+                    ['word' => 'حاج', 'word_tashkeel' => 'حَاجٌ'],
+                    ['word' => 'حاج', 'word_tashkeel' => 'حَاجٌ'],
                     ['word' => 'حاج', 'word_tashkeel' => 'حَاجٌ'],
                     ['word' => 'معتمر', 'word_tashkeel' => 'مُعْتَمِر'],
                 ],
@@ -90,6 +114,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'ايمان', 'word_tashkeel' => 'إِيمَان'],
                     ['word' => 'مؤمن', 'word_tashkeel' => 'مُؤْمِن'],
+                    ['word' => 'مؤمن', 'word_tashkeel' => 'مُؤْمِن'],
+                    ['word' => 'مؤمن', 'word_tashkeel' => 'مُؤْمِن'],
+                    ['word' => 'مؤمن', 'word_tashkeel' => 'مُؤْمِن'],
                     ['word' => 'توكل', 'word_tashkeel' => 'تَوَكُّل'],
                 ],
             ],
@@ -98,6 +125,9 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'الفهم والفقه الديني',
                 'words' => [
                     ['word' => 'فقه', 'word_tashkeel' => 'فَقْه'],
+                    ['word' => 'فقهاء', 'word_tashkeel' => 'فُقَهَاء'],
+                    ['word' => 'فقهاء', 'word_tashkeel' => 'فُقَهَاء'],
+                    ['word' => 'فقهاء', 'word_tashkeel' => 'فُقَهَاء'],
                     ['word' => 'فقهاء', 'word_tashkeel' => 'فُقَهَاء'],
                     ['word' => 'فتوى', 'word_tashkeel' => 'فَتْوَى'],
                 ],
@@ -108,6 +138,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'تربي', 'word_tashkeel' => 'تَرْبِيَة'],
                     ['word' => 'مربي', 'word_tashkeel' => 'مُرَبِّي'],
+                    ['word' => 'مربي', 'word_tashkeel' => 'مُرَبِّي'],
+                    ['word' => 'مربي', 'word_tashkeel' => 'مُرَبِّي'],
+                    ['word' => 'مربي', 'word_tashkeel' => 'مُرَبِّي'],
                     ['word' => 'تزكي', 'word_tashkeel' => 'تَزْكِيَة'],
                 ],
             ],
@@ -116,6 +149,9 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'الامتنان والنعمة',
                 'words' => [
                     ['word' => 'شكر', 'word_tashkeel' => 'شُكْر'],
+                    ['word' => 'شاكر', 'word_tashkeel' => 'شَاكِر'],
+                    ['word' => 'شاكر', 'word_tashkeel' => 'شَاكِر'],
+                    ['word' => 'شاكر', 'word_tashkeel' => 'شَاكِر'],
                     ['word' => 'شاكر', 'word_tashkeel' => 'شَاكِر'],
                     ['word' => 'حمد', 'word_tashkeel' => 'حَمْد'],
                 ],
@@ -126,6 +162,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'خوف', 'word_tashkeel' => 'خَوْف'],
                     ['word' => 'خائف', 'word_tashkeel' => 'خَائِف'],
+                    ['word' => 'خائف', 'word_tashkeel' => 'خَائِف'],
+                    ['word' => 'خائف', 'word_tashkeel' => 'خَائِف'],
+                    ['word' => 'خائف', 'word_tashkeel' => 'خَائِف'],
                     ['word' => 'متقي', 'word_tashkeel' => 'مُتَّقِي'],
                 ],
             ],
@@ -133,6 +172,9 @@ class RootsTableSeeder extends Seeder {
                 'origin_word' => 'توب',
                 'name' => 'الندم والعودة إلى الله',
                 'words' => [
+                    ['word' => 'توبة', 'word_tashkeel' => 'تَوْبَة'],
+                    ['word' => 'توبة', 'word_tashkeel' => 'تَوْبَة'],
+                    ['word' => 'توبة', 'word_tashkeel' => 'تَوْبَة'],
                     ['word' => 'توبة', 'word_tashkeel' => 'تَوْبَة'],
                     ['word' => 'تائب', 'word_tashkeel' => 'تَائِب'],
                     ['word' => 'استغفر', 'word_tashkeel' => 'اسْتَغْفَرَ'],
@@ -143,6 +185,9 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'الندب والاستغاثة',
                 'words' => [
                     ['word' => 'دعاء', 'word_tashkeel' => 'دُعَاء'],
+                    ['word' => 'دعاء', 'word_tashkeel' => 'دُعَاء'],
+                    ['word' => 'دعاء', 'word_tashkeel' => 'دُعَاء'],
+                    ['word' => 'دعاء', 'word_tashkeel' => 'دُعَاء'],
                     ['word' => 'داعي', 'word_tashkeel' => 'دَاعِي'],
                     ['word' => 'ادع', 'word_tashkeel' => 'ٱدْعُ'],
                 ],
@@ -152,6 +197,9 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'الذكر والدعاء',
                 'words' => [
                     ['word' => 'اسم', 'word_tashkeel' => 'ٱسْم'],
+                    ['word' => 'اذكار', 'word_tashkeel' => 'أَذْكَار'],
+                    ['word' => 'اذكار', 'word_tashkeel' => 'أَذْكَار'],
+                    ['word' => 'اذكار', 'word_tashkeel' => 'أَذْكَار'],
                     ['word' => 'اذكار', 'word_tashkeel' => 'أَذْكَار'],
                     ['word' => 'تسبيح', 'word_tashkeel' => 'تَسْبِيح'],
                 ],
@@ -171,6 +219,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'سمع', 'word_tashkeel' => 'سَمِعَ'],
                     ['word' => 'سامع', 'word_tashkeel' => 'سَامِع'],
+                    ['word' => 'سامع', 'word_tashkeel' => 'سَامِع'],
+                    ['word' => 'سامع', 'word_tashkeel' => 'سَامِع'],
+                    ['word' => 'سامع', 'word_tashkeel' => 'سَامِع'],
                     ['word' => 'استمع', 'word_tashkeel' => 'اِسْتَمَعَ'],
                 ],
             ],
@@ -179,6 +230,9 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'الحركة والسعي',
                 'words' => [
                     ['word' => 'مشي', 'word_tashkeel' => 'مَشْي'],
+                    ['word' => 'سار', 'word_tashkeel' => 'سَارَ'],
+                    ['word' => 'سار', 'word_tashkeel' => 'سَارَ'],
+                    ['word' => 'سار', 'word_tashkeel' => 'سَارَ'],
                     ['word' => 'سار', 'word_tashkeel' => 'سَارَ'],
                     ['word' => 'مشى', 'word_tashkeel' => 'مَشَى'],
                 ],
@@ -189,6 +243,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'نظر', 'word_tashkeel' => 'نَظَر'],
                     ['word' => 'ناظر', 'word_tashkeel' => 'نَاظِر'],
+                    ['word' => 'ناظر', 'word_tashkeel' => 'نَاظِر'],
+                    ['word' => 'ناظر', 'word_tashkeel' => 'نَاظِر'],
+                    ['word' => 'ناظر', 'word_tashkeel' => 'نَاظِر'],
                     ['word' => 'تفكر', 'word_tashkeel' => 'تَفَكُّر'],
                 ],
             ],
@@ -197,6 +254,9 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'المعرفة والتعليم',
                 'words' => [
                     ['word' => 'تعلم', 'word_tashkeel' => 'تَعَلُّم'],
+                    ['word' => 'طالب', 'word_tashkeel' => 'طَالِب'],
+                    ['word' => 'طالب', 'word_tashkeel' => 'طَالِب'],
+                    ['word' => 'طالب', 'word_tashkeel' => 'طَالِب'],
                     ['word' => 'طالب', 'word_tashkeel' => 'طَالِب'],
                     ['word' => 'مدرس', 'word_tashkeel' => 'مُدَرِّس'],
                 ],
@@ -207,6 +267,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'مركبة', 'word_tashkeel' => 'مَرْكَبَة'],
                     ['word' => 'راكب', 'word_tashkeel' => 'رَاكِب'],
+                    ['word' => 'راكب', 'word_tashkeel' => 'رَاكِب'],
+                    ['word' => 'راكب', 'word_tashkeel' => 'رَاكِب'],
+                    ['word' => 'راكب', 'word_tashkeel' => 'رَاكِب'],
                     ['word' => 'سفر', 'word_tashkeel' => 'سَفَر'],
                 ],
             ],
@@ -215,6 +278,9 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'الجري والنشاط',
                 'words' => [
                     ['word' => 'ركض', 'word_tashkeel' => 'رَكَضَ'],
+                    ['word' => 'جرى', 'word_tashkeel' => 'جَرَى'],
+                    ['word' => 'جرى', 'word_tashkeel' => 'جَرَى'],
+                    ['word' => 'جرى', 'word_tashkeel' => 'جَرَى'],
                     ['word' => 'جرى', 'word_tashkeel' => 'جَرَى'],
                     ['word' => 'عدو', 'word_tashkeel' => 'عَدَوَ'],
                 ],
@@ -225,6 +291,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'ركوع', 'word_tashkeel' => 'رُكُوع'],
                     ['word' => 'سجدة', 'word_tashkeel' => 'سَجْدَة'],
+                    ['word' => 'سجدة', 'word_tashkeel' => 'سَجْدَة'],
+                    ['word' => 'سجدة', 'word_tashkeel' => 'سَجْدَة'],
+                    ['word' => 'سجدة', 'word_tashkeel' => 'سَجْدَة'],
                     ['word' => 'ركعتين', 'word_tashkeel' => 'رَكْعَتَيْن'],
                 ],
             ],
@@ -232,6 +301,8 @@ class RootsTableSeeder extends Seeder {
                 'origin_word' => 'زرع',
                 'name' => 'الزراعة والعمل',
                 'words' => [
+                    ['word' => 'زراعة', 'word_tashkeel' => 'زِرَاعَة'],
+                    ['word' => 'زراعة', 'word_tashkeel' => 'زِرَاعَة'],
                     ['word' => 'زراعة', 'word_tashkeel' => 'زِرَاعَة'],
                     ['word' => 'زارع', 'word_tashkeel' => 'زَارِع'],
                     ['word' => 'محصول', 'word_tashkeel' => 'مَحْصُول'],
@@ -243,6 +314,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'شرب', 'word_tashkeel' => 'شَرِبَ'],
                     ['word' => 'شارب', 'word_tashkeel' => 'شَارِب'],
+                    ['word' => 'شارب', 'word_tashkeel' => 'شَارِب'],
+                    ['word' => 'شارب', 'word_tashkeel' => 'شَارِب'],
+                    ['word' => 'شارب', 'word_tashkeel' => 'شَارِب'],
                     ['word' => 'ماء', 'word_tashkeel' => 'مَاء'],
                 ],
             ],
@@ -252,6 +326,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'طعام', 'word_tashkeel' => 'طَعَام'],
                     ['word' => 'فاكهة', 'word_tashkeel' => 'فَاكِهَة'],
+                    ['word' => 'فاكهة', 'word_tashkeel' => 'فَاكِهَة'],
+                    ['word' => 'فاكهة', 'word_tashkeel' => 'فَاكِهَة'],
+                    ['word' => 'فاكهة', 'word_tashkeel' => 'فَاكِهَة'],
                     ['word' => 'خبز', 'word_tashkeel' => 'خُبْز'],
                 ],
             ],
@@ -259,6 +336,9 @@ class RootsTableSeeder extends Seeder {
                 'origin_word' => 'ركب',
                 'name' => 'الركوب والسفر',
                 'words' => [
+                    ['word' => 'عربة', 'word_tashkeel' => 'عَرَبِيَّة'],
+                    ['word' => 'عربة', 'word_tashkeel' => 'عَرَبِيَّة'],
+                    ['word' => 'عربة', 'word_tashkeel' => 'عَرَبِيَّة'],
                     ['word' => 'عربة', 'word_tashkeel' => 'عَرَبِيَّة'],
                     ['word' => 'سيارة', 'word_tashkeel' => 'سَيَّارَة'],
                     ['word' => 'دراجة', 'word_tashkeel' => 'دَرَّاجَة'],
@@ -269,6 +349,8 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'الجري والنشاط',
                 'words' => [
                     ['word' => 'عدو', 'word_tashkeel' => 'عَدْو'],
+                    ['word' => 'ركض', 'word_tashkeel' => 'رَكْض'],
+                    ['word' => 'ركض', 'word_tashkeel' => 'رَكْض'],
                     ['word' => 'ركض', 'word_tashkeel' => 'رَكْض'],
                     ['word' => '走', 'word_tashkeel' => 'مَشَى'],
                 ],
@@ -288,6 +370,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'مشي', 'word_tashkeel' => 'مَشَى'],
                     ['word' => 'سيرة', 'word_tashkeel' => 'سِيرَة'],
+                    ['word' => 'سيرة', 'word_tashkeel' => 'سِيرَة'],
+                    ['word' => 'سيرة', 'word_tashkeel' => 'سِيرَة'],
+                    ['word' => 'سيرة', 'word_tashkeel' => 'سِيرَة'],
                     ['word' => 'مشوار', 'word_tashkeel' => 'مَشْوَار'],
                 ],
             ],
@@ -295,6 +380,8 @@ class RootsTableSeeder extends Seeder {
                 'origin_word' => 'ركب',
                 'name' => 'الركوب والقيادة',
                 'words' => [
+                    ['word' => 'ركوب', 'word_tashkeel' => 'رُكُوب'],
+                    ['word' => 'ركوب', 'word_tashkeel' => 'رُكُوب'],
                     ['word' => 'ركوب', 'word_tashkeel' => 'رُكُوب'],
                     ['word' => 'قيادة', 'word_tashkeel' => 'قِيَادَة'],
                     ['word' => 'مقود', 'word_tashkeel' => 'مَقُود'],
@@ -307,6 +394,9 @@ class RootsTableSeeder extends Seeder {
                     ['word' => 'كتاب', 'word_tashkeel' => 'كِتَاب'],
                     ['word' => 'كتب', 'word_tashkeel' => 'كَتَبَ'],
                     ['word' => 'كاتبة', 'word_tashkeel' => 'كَاتِبَة'],
+                    ['word' => 'كاتبة', 'word_tashkeel' => 'كَاتِبَة'],
+                    ['word' => 'كاتبة', 'word_tashkeel' => 'كَاتِبَة'],
+                    ['word' => 'كاتبة', 'word_tashkeel' => 'كَاتِبَة'],
                 ],
             ],
             [
@@ -315,6 +405,9 @@ class RootsTableSeeder extends Seeder {
                 'words' => [
                     ['word' => 'فعل', 'word_tashkeel' => 'فَعَلَ'],
                     ['word' => 'فاعل', 'word_tashkeel' => 'فَاعِل'],
+                    ['word' => 'فاعل', 'word_tashkeel' => 'فَاعِل'],
+                    ['word' => 'فاعل', 'word_tashkeel' => 'فَاعِل'],
+                    ['word' => 'فاعل', 'word_tashkeel' => 'فَاعِل'],
                     ['word' => 'فعلة', 'word_tashkeel' => 'فَعْلَة'],
                 ],
             ],
@@ -322,6 +415,9 @@ class RootsTableSeeder extends Seeder {
                 'origin_word' => 'خلق',
                 'name' => 'الخلق والصفات',
                 'words' => [
+                    ['word' => 'خلق', 'word_tashkeel' => 'خَلَقَ'],
+                    ['word' => 'خلق', 'word_tashkeel' => 'خَلَقَ'],
+                    ['word' => 'خلق', 'word_tashkeel' => 'خَلَقَ'],
                     ['word' => 'خلق', 'word_tashkeel' => 'خَلَقَ'],
                     ['word' => 'خلاق', 'word_tashkeel' => 'خُلُق'],
                     ['word' => 'خلق', 'word_tashkeel' => 'خَلْق'],
@@ -332,6 +428,9 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'الصناعة والعمل',
                 'words' => [
                     ['word' => 'صنع', 'word_tashkeel' => 'صَنَعَ'],
+                    ['word' => 'صنع', 'word_tashkeel' => 'صَنَعَ'],
+                    ['word' => 'صنع', 'word_tashkeel' => 'صَنَعَ'],
+                    ['word' => 'صنع', 'word_tashkeel' => 'صَنَعَ'],
                     ['word' => 'صانع', 'word_tashkeel' => 'صَانِع'],
                     ['word' => 'صنعة', 'word_tashkeel' => 'صِنْعَة'],
                 ],
@@ -341,6 +440,11 @@ class RootsTableSeeder extends Seeder {
                 'name' => 'المعرفة والدراسة',
                 'words' => [
                     ['word' => 'علوم', 'word_tashkeel' => 'عُلُوم'],
+                    ['word' => 'علوم', 'word_tashkeel' => 'عُلُوم'],
+                    ['word' => 'علوم', 'word_tashkeel' => 'عُلُوم'],
+                    ['word' => 'علوم', 'word_tashkeel' => 'عُلُوم'],
+                    ['word' => 'علوم', 'word_tashkeel' => 'عُلُوم'],
+                    ['word' => 'علوم', 'word_tashkeel' => 'عُلُوم'],
                     ['word' => 'طالب', 'word_tashkeel' => 'طَالِب'],
                     ['word' => 'بحث', 'word_tashkeel' => 'بَحْث'],
                 ],
@@ -349,6 +453,10 @@ class RootsTableSeeder extends Seeder {
                 'origin_word' => 'طلب',
                 'name' => 'الطلبات والرغبات',
                 'words' => [
+                    ['word' => 'طلب', 'word_tashkeel' => 'طَلَبَ'],
+                    ['word' => 'طلب', 'word_tashkeel' => 'طَلَبَ'],
+                    ['word' => 'طلب', 'word_tashkeel' => 'طَلَبَ'],
+                    ['word' => 'طلب', 'word_tashkeel' => 'طَلَبَ'],
                     ['word' => 'طلب', 'word_tashkeel' => 'طَلَبَ'],
                     ['word' => 'طالب', 'word_tashkeel' => 'طَالِب'],
                     ['word' => 'طلبية', 'word_tashkeel' => 'طَلَبِيَّة'],
