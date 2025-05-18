@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $root_id
@@ -33,6 +34,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereWord($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereWordTashkeel($value)
  * @property-read \App\Models\root $root
+ * @method static Builder<static>|Word search(string $search)
+ * @method static Builder<static>|Word stepOne(string $search)
+ * @method static Builder<static>|Word stepThree(string $search)
+ * @method static Builder<static>|Word stepTwo(string $search)
  * @mixin \Eloquent
  */
 class Word extends Model {
@@ -53,5 +58,21 @@ class Word extends Model {
     }
     public function surah(): BelongsTo {
         return $this->belongsTo(\App\Models\Surah::class);
+    }
+    public function scopeSearch(Builder $query, string $search) {
+        $query->where('word', 'LIKE', "%{$search}%");
+        $query->orWhere('word_tashkeel', 'LIKE', "%{$search}%");
+    }
+    public function scopeStepOne(Builder $query, string $search) {
+        $query->Where('word_tashkeel', 'LIKE', "%{$search}%");
+    }
+    public function scopeStepTwo(Builder $query, string $search) {
+        $query->where('word', 'LIKE', "%{$search}%");
+    }
+    public function scopeStepThree(Builder $query, string $search) {
+        $query->whereHas('root', function (Builder $q) use ($search) {
+            $q->where('origin_word', 'LIKE', "%{$search}%");
+            $q->orWhere('name', 'LIKE', "%{$search}%");
+        });
     }
 }

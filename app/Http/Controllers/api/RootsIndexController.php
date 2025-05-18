@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
 use App\Helpers\pr;
 use App\Http\Controllers\Controller;
@@ -17,7 +17,6 @@ class RootsIndexController extends Controller {
             ->select(['id', 'origin_word', 'name'])
             ->with([
                 'words:id,root_id,verse_id,surah_id,word,word_tashkeel',
-                // 'words',
                 'words.surah:id,name,type,total_verses',
                 'words.verse:id,surah_id,verse_number,text',
             ]);
@@ -25,7 +24,7 @@ class RootsIndexController extends Controller {
             $search = $request->get('search') ?? '';
             $query->search($search);
         }
-        $query =  $query->limit(5);
+        $query =  $query->limit(10);
         $result = $query->get()->toArray();
 
         foreach ($result as $i => $root) {
@@ -34,7 +33,6 @@ class RootsIndexController extends Controller {
                     fn($arr) => $arr[0]
                 );
         }
-        // dd($result);
         return $result;
     }
 }

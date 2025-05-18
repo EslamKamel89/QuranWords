@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- *
+ * 
  *
  * @property int $id
  * @property string $origin_word
@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereOriginWord($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereUpdatedAt($value)
+ * @method static Builder<static>|Root search(string $search)
  * @mixin \Eloquent
  */
 class Root extends Model {

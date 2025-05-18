@@ -31,8 +31,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereOriginWord($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereUpdatedAt($value)
+ * @method static Builder<static>|Root search(string $search)
  * @mixin \Eloquent
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Root search(string $search)
  */
 	class Root extends \Eloquent {}
 }
@@ -155,6 +155,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereWord($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|word whereWordTashkeel($value)
  * @property-read \App\Models\root $root
+ * @method static Builder<static>|Word search(string $search)
+ * @method static Builder<static>|Word stepOne(string $search)
+ * @method static Builder<static>|Word stepThree(string $search)
+ * @method static Builder<static>|Word stepTwo(string $search)
  * @mixin \Eloquent
  */
 	class Word extends \Eloquent {}
