@@ -11,7 +11,8 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('surahs', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->charset('utf8mb4')->collation('utf8mb4_unicode_ci');; // Arabic
+            $table->string('name')
+                ->charset('utf8mb4')->collation('utf8mb4_unicode_ci'); // Arabic
             $table->string('name_en');
             $table->enum('type', ['meccan', 'medinan']);
             $table->integer('total_verses');

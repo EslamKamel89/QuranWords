@@ -11,8 +11,8 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('roots', function (Blueprint $table) {
             $table->id();
-            $table->string('origin_word')->charset('utf8mb4')->collation('utf8mb4_unicode_ci');;
-            $table->string('name')->charset('utf8mb4')->collation('utf8mb4_unicode_ci');;
+            $table->string('origin_word')->charset('utf8mb4')->collation('utf8mb4_unicode_ci');
+            $table->string('name')->charset('utf8mb4')->collation('utf8mb4_unicode_ci');
             $table->timestamps();
         });
     }

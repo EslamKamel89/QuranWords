@@ -123,6 +123,9 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\word> $word
  * @property-read int|null $word_count
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Word> $words
+ * @property-read int|null $words_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Verse search(string $search)
  */
 	class Verse extends \Eloquent {}
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -29,6 +30,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Verse whereVerseNumber($value)
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\word> $word
  * @property-read int|null $word_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Word> $words
+ * @property-read int|null $words_count
+ * @method static Builder<static>|Verse search(string $search)
  * @mixin \Eloquent
  */
 class Verse extends Model {
@@ -43,7 +47,12 @@ class Verse extends Model {
     public function surah(): BelongsTo {
         return $this->belongsTo(Surah::class);
     }
-    public function word(): HasMany {
+    public function words(): HasMany {
         return $this->hasMany(Word::class);
+    }
+    public function scopeSearch(Builder $query,  string $search) {
+        $query->whereHas('words', function (Builder $q) use ($search) {
+            $q->where('word_tashkeel', 'LIKE', "%{$search}%");
+        });
     }
 }

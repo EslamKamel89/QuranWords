@@ -14,8 +14,8 @@ return new class extends Migration {
             $table->foreignId('root_id')->constrained('roots')->cascadeOnDelete();
             $table->foreignId('verse_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('surah_id')->nullable()->constrained()->nullOnDelete();
-            $table->text('word')->charset('utf8mb4')->collation('utf8mb4_unicode_ci');;
-            $table->text('word_tashkeel')->charset('utf8mb4')->collation('utf8mb4_unicode_ci');;
+            $table->text('word')->charset('utf8mb4')->collation('utf8mb4_unicode_ci');
+            $table->text('word_tashkeel')->charset('utf8mb4')->collation('utf8mb4_unicode_ci');
             $table->timestamps();
         });
     }

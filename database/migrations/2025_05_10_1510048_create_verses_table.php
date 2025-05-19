@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('surah_id')->constrained('surahs')->cascadeOnDelete();
             $table->integer('verse_number');
-            $table->text('text')->charset('utf8mb4')->collation('utf8mb4_unicode_ci');;
+            $table->text('text')->charset('utf8mb4')->collation('utf8mb4_unicode_ci');
             $table->timestamps();
         });
     }
