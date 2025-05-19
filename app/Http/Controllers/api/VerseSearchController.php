@@ -12,7 +12,8 @@ class VerseSearchController extends Controller {
      */
     public function __invoke(Request $request) {
         $query = Verse::query();
-        $query->select(['surah_id', 'verse_number', 'text'])
+        $query
+            ->select(['id', 'surah_id', 'verse_number', 'text'])
             ->with([
                 'surah:id,name,total_verses',
                 'words:id,root_id,verse_id,surah_id,word_tashkeel'
@@ -21,6 +22,7 @@ class VerseSearchController extends Controller {
             return $query->get();
         }
         $search = $request->get('search');
+        // dd($query->search($search ?? '')->toRawSql());
         return $query->search($search)->get();
     }
 }
