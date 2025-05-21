@@ -1,0 +1,3 @@
+there are two bugs until now
+1- when you delete related words weired things happend and list out of range error occurs
+2- you can delete all the related words in the edit page for the root.
