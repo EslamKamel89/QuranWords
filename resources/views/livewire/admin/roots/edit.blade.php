@@ -53,7 +53,7 @@ new class extends Component {
 
         session()->flash('message', 'تم حفظ الكلمات الرئيسية مع الكلمات بنجاح');
 
-        return redirect()->route('roots.index');
+        return redirect()->route('roots.edit', ['root' => $this->root->id]);
     }
 
     #[On('edit-root-surah-verse-selector')]
