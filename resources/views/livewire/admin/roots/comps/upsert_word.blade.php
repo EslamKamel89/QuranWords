@@ -14,6 +14,7 @@ new class extends Component {
     public $surahs;
     public int $rootId;
     public int $wordId;
+    public int $index;
     public function mount() {
     }
     #[On('surah-verse-selector_update.{wordId}')]
@@ -65,7 +66,7 @@ new class extends Component {
 <div class="p-4 border border-gray-200 rounded-md dark:border-gray-700 bg-gray-50 dark:bg-zinc-900">
     <div class="flex justify-end w-full">
 
-        <flux:badge color="lime">{{ $word['id'] == -1 ? "كلمة جديدة" : $word['id'] }}</flux:badge>
+        <flux:badge color="lime">{{ $word['id'] == -1 ? "كلمة جديدة" : $index }}</flux:badge>
     </div>
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div>

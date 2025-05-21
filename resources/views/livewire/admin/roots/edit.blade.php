@@ -119,6 +119,7 @@ new class extends Component {
                     :word="$word"
                     :rootId="$root->id"
                     :wordId="$word['id']"
+                    :index="$index"
                     :key="'word-repeater'.$word['id']" />
                 @endforeach
             </div>
