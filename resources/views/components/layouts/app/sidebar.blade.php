@@ -85,6 +85,7 @@ $isRtl = app()->getLocale() === 'ar';
 
 
     @fluxScripts
+    <x-toaster-hub />
 </body>
 
 </html>

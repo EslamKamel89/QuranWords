@@ -52,7 +52,7 @@ new class extends Component {
         return redirect()->route('roots.index');
     }
 
-    #[On('create-root-surah-verse-selector')]
+    #[On('surah-verse-selector_create')]
     public function surahVerseListener(array $payload) {
         $index = $payload['meta']['index'] ?? null;
         $surahId = $payload['selectedVerse']['surah_id'] ?? null;
@@ -100,9 +100,7 @@ new class extends Component {
         <div class="mt-6">
             <div class="flex items-center justify-between">
                 <h2 class="text-lg font-semibold text-gray-800 dark:text-white">الكلمات المرتبطة</h2>
-                <button type="button" wire:click="addWord" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    إضافة كلمة
-                </button>
+
             </div>
 
             <div class="mt-4 space-y-4">
@@ -121,15 +119,20 @@ new class extends Component {
                         </div>
                     </div>
                     <div>
-                        <livewire:admin.shared.surah-verse-selector event-name="create-root-surah-verse-selector" :surahs="$surahs" :meta="['index' => $index]" :key="'word-repeater'.$index" />
+                        <livewire:admin.shared.surah-verse-selector event-name="surah-verse-selector_create" :surahs="$surahs" :meta="['index' => $index]" :key="'word-repeater'.$index" />
                     </div>
                     <div class="flex justify-end mt-2">
-                        <button type="button" wire:click="removeWord({{ $index }})" class="text-sm text-red-600 hover:text-red-800">
+                        <button type="button" wire:click="removeWord({{ $index }})" class="px-2 py-1 text-sm text-red-600 bg-red-100 border rounded-lg shadow hover:text-red-800 hover:scale-105 hover:shadow-lg">
                             حذف
                         </button>
                     </div>
                 </div>
                 @endforeach
+            </div>
+            <div class="flex justify-end w-full mt-4">
+                <button type="button" wire:click="addWord" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    إضافة كلمة
+                </button>
             </div>
         </div>
 
