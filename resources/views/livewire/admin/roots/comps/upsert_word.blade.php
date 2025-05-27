@@ -27,10 +27,9 @@ new class extends Component {
         $this->word['verse_id'] = $verseId;
     }
     public function removeWord() {
-        if ($this->word['id'] != -1) {
-            Word::where('id', $this->word['id'])->delete();
-            $this->info("تم حذف الكلمة بنجاح");
-        }
+        // if ($this->word['id'] != -1) {
+        //     Word::where('id', $this->word['id'])->delete();
+        // }
         $this->dispatch('upsert-word_remove-word', ['id' => $this->word['id']]);
     }
     public function save() {

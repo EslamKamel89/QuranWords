@@ -17,13 +17,21 @@ new class extends Component {
     public $words = [];
 
     public function mount() {
-        $this->root->load(['words']);
+        $this->root->load(['words', 'words.verse:id,surah_id']);
         $this->origin_word = $this->root->origin_word;
         $this->name = $this->root->name;
-        $this->words = $this->root->words->toArray();
+        $this->initAndSortWords();
     }
-
+    public function initAndSortWords() {
+        $this->words = $this->root->words
+            ->sortByDesc('created_at')
+            ->sortBy(function ($word) {
+                return $word->verse->id;
+            }, SORT_ASC)
+            ->toArray();
+    }
     public function addWord() {
+        pr::log($this->words, 'addWord');
         if ($this->words[count($this->words) - 1]['id'] == -1) {
             $this->warning('لقد أضفت كلمة ولم تحفظها!');
             return;
@@ -37,9 +45,17 @@ new class extends Component {
     #[On('upsert-word_remove-word')]
     public function removeWord($payload) {
         $id = $payload['id'];
+        if (count($this->words) == 1) {
+            $this->info("لا يمكنك حذف الكلمة الوحيدة المرتبطة بالكلمة الرئيسية. أضف كلمة أخرى لتتمكن من الحذف");
+            return;
+        }
         foreach ($this->words as $index => $word) {
             if ($word['id'] == $id) {
+                if ($id != -1) {
+                    Word::where('id', $id)->delete();
+                }
                 unset($this->words[$index]);
+                $this->info("تم حذف الكلمة بنجاح");
                 break;
             }
         }
@@ -113,7 +129,7 @@ new class extends Component {
             </div>
 
             <div class="mt-4 space-y-4">
-                @foreach ($words as $index => $word)
+                @foreach (array_values($words) as $index => $word)
                 <livewire:admin.roots.comps.upsert_word
                     :surahs="$surahs"
                     :word="$word"
@@ -123,10 +139,11 @@ new class extends Component {
                     :key="'word-repeater'.$word['id']" />
                 @endforeach
             </div>
-            <div class="flex justify-end w-full mt-4">
-                <button type="button" wire:click="addWord" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    إضافة كلمة
-                </button>
+            <div class="flex justify-end w-full mt-4 space-x-2">
+                <flux:button type="button" wire:click="initAndSortWords"> ترتيب الكلمات</flux:button>
+                <flux:button type="button" variant="primary" class="bg-green-500 hover:bg-green-600" wire:click="addWord"> إضافة كلمة</flux:button>
+
+
             </div>
         </div>
 
