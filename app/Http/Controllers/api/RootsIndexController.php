@@ -11,7 +11,9 @@ class RootsIndexController extends Controller {
      * Handle the incoming request.
      */
     public function __invoke(Request $request) {
-        $roots = Root::select(['id', 'name'])->get();
+        $roots = Root::select(['id', 'name'])
+            ->latest()
+            ->get();
         return $roots;
     }
 }
