@@ -30,7 +30,7 @@ new class extends Component {
                 ->filter(
                     fn(Surah $surah) =>
                     $this->searchSurah ? str($surah->name)
-                        ->contains($this->searchSurah) : true
+                        ->contains($this->searchSurah)  || $surah->id == $this->searchSurah : true
                 ),
             'filteredVerses' => $this->selectedSurah && $this->verses ? collect($this->verses)
                 ->filter(
@@ -40,6 +40,7 @@ new class extends Component {
         ];
     }
     public function selectSurah(array $surah) {
+        dd($surah);
         $this->selectedSurah = $surah;
         $this->searchSurah = $surah['name'];
         $this->verses = Verse::select(['id', 'surah_id', 'text', 'verse_number'])
@@ -72,7 +73,7 @@ new class extends Component {
                 <div
                     @click="open=false"
                     wire:click="selectSurah({{ $surah }})"
-                    class="px-4 py-2 cursor-pointer hover:bg-indigo-100 dark:hover:bg-zinc-700" key="{{ $surah->id }}">{{ $surah->name }}</div>
+                    class="px-4 py-2 cursor-pointer hover:bg-indigo-100 dark:hover:bg-zinc-700" key="{{ $surah->id }}">{{ $surah->id }}-{{ $surah->name }}</div>
                 @empty
                 <div class="px-4 py-2 text-gray-500 dark:text-gray-400">لا توجد نتائج</div>
                 @endforelse

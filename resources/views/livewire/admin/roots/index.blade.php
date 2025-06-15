@@ -147,7 +147,7 @@ new class extends Component {
                         <button wire:click="delete({{ $root->id }})" wire:confirm="هل أنت متأكد من أنك تريد حذف هذا الجذر؟" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                             <flux:icon.trash class="size-4" />
                         </button>
-                        <a href="{{ route('roots.show' , ['root'=>$root->id]) }}" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                        <a wire:navigate href="{{ route('roots.show' , ['root'=>$root->id]) }}" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
                             <flux:icon.information-circle class="size-4" />
                         </a>
                     </td>
