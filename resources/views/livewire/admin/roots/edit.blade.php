@@ -31,7 +31,7 @@ new class extends Component {
             ->toArray();
     }
     public function addWord() {
-        pr::log($this->words, 'addWord');
+        // pr::log($this->words, 'addWord');
         if ($this->words[count($this->words) - 1]['id'] == -1) {
             $this->warning('لقد أضفت كلمة ولم تحفظها!');
             return;

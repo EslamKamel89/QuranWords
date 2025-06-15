@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use App\Helpers\pr;
+use App\Observers\WordObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $root_id
@@ -52,6 +55,16 @@ class Word extends Model {
         'word',
         'word_tashkeel',
     ];
+    protected static function booted() {
+        static::created(function ($word) {
+            $word->load(['root']);
+            $word->root->update(['word_updated_at' => now()]);
+        });
+        static::updated(function ($word) {
+            $word->load(['root']);
+            $word->root->update(['word_updated_at' => now()]);
+        });
+    }
     public function root(): BelongsTo {
         return $this->belongsTo(Root::class);
     }

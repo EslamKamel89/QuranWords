@@ -24,7 +24,7 @@ class WordsSearchController extends Controller {
         $search = $request->get('search');
 
         if ($this->getWordQueryInstance()->stepOne($search)->count()) {
-            pr::log($this->getWordQueryInstance()->stepOne($search)->toRawSql());
+            // pr::log($this->getWordQueryInstance()->stepOne($search)->toRawSql());
             $stepOne = $this->getWordQueryInstance()->stepOne($search)->paginate($this->paginationLimit);
             // pr::log('Step one triggered');
             return $stepOne;

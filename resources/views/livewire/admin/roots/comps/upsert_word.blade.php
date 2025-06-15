@@ -51,12 +51,13 @@ new class extends Component {
             ]);
             $this->dispatch('upsert-word_new-word-created', $word->toArray());
         } else {
-            $word = Word::where('id', $this->word['id'])->update(pr::log([
+            $word = Word::where('id', $this->word['id'])->first();
+            $word->update([
                 'word' => $this->word['word'],
                 'word_tashkeel' => $this->word['word_tashkeel'],
                 'surah_id' => $this->word['surah_id'],
                 'verse_id' => $this->word['verse_id'],
-            ]));
+            ]);
         }
         $this->info("تم حفظ الكلمة بنجاح");
     }

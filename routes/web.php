@@ -30,13 +30,11 @@ Route::middleware(['auth'])->group(function () {
         ->name('roots.edit');
 });
 
-Route::get('/test', function (Request $request) {
-    $roots = Root::with(['words'])->get();
-    dump($roots);
-    $roots->each(function ($root) {
-        $word =   $root->words->sortByDesc(fn($word) => $word->updated_at)->first();
-    });
-    dd('END');
-});
+// Route::get('/test', function () {
+//     $word = new App\Models\Word;
+//     $observerClass = App\Observers\WordObserver::class;
+
+//     dd($word->getObservableEvents(), array_search($observerClass, $word->getGlobalObservers()));
+// });
 
 require __DIR__ . '/auth.php';
