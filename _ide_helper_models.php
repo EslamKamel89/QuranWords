@@ -162,9 +162,9 @@ namespace App\Models{
  * @method static Builder<static>|Word stepOne(string $search)
  * @method static Builder<static>|Word stepThree(string $search)
  * @method static Builder<static>|Word stepTwo(string $search)
- * @mixin \Eloquent
  * @property string|null $word_updated_at
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Word whereWordUpdatedAt($value)
+ * @method static Builder<static>|Word whereWordUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class Word extends \Eloquent {}
 }

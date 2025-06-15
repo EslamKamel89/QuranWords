@@ -51,7 +51,6 @@ class Word extends Model {
         'surah_id',
         'word',
         'word_tashkeel',
-        'word_updated_at',
     ];
     public function root(): BelongsTo {
         return $this->belongsTo(Root::class);

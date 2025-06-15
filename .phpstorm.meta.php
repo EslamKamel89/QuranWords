@@ -2523,8 +2523,9 @@ namespace PHPSTORM_META {
 'debugbar.queries.explain','sanctum.csrf-cookie','livewire.update',
 'livewire.upload-file','livewire.preview-file','home','settings.profile',
 'settings.password','settings.appearance','dashboard','roots.index','roots.create',
-'roots.edit','login','register','password.request','password.reset',
-'verification.notice','verification.verify','password.confirm','logout','storage.local',);
+'roots.edit','login','register','password.request',
+'password.reset','verification.notice','verification.verify','password.confirm','logout',
+'storage.local',);
         registerArgumentsSet('views', 
 'components.action-message','components.app-logo','components.app-logo-icon','components.auth-header','components.auth-session-status',
 'components.layouts.app','components.layouts.app.header','components.layouts.app.sidebar','components.layouts.auth','components.layouts.auth.card',

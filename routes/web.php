@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Root;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -27,6 +28,15 @@ Route::middleware(['auth'])->group(function () {
         ->name('roots.create');
     Volt::route('/admin/roots/{root}/edit', 'admin.roots.edit')
         ->name('roots.edit');
+});
+
+Route::get('/test', function (Request $request) {
+    $roots = Root::with(['words'])->get();
+    dump($roots);
+    $roots->each(function ($root) {
+        $word =   $root->words->sortByDesc(fn($word) => $word->updated_at)->first();
+    });
+    dd('END');
 });
 
 require __DIR__ . '/auth.php';

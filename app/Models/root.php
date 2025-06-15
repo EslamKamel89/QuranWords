@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereOriginWord($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|root whereUpdatedAt($value)
  * @method static Builder<static>|Root search(string $search)
+ * @property string|null $word_updated_at
+ * @method static Builder<static>|Root whereWordUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Root extends Model {
@@ -35,6 +37,7 @@ class Root extends Model {
     protected $fillable = [
         'origin_word',
         'name',
+        'word_updated_at',
     ];
     public function words(): HasMany {
         return $this->hasMany(Word::class);

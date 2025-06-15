@@ -9,7 +9,7 @@ return new class extends Migration {
      * Run the migrations.
      */
     public function up(): void {
-        Schema::table('words', function (Blueprint $table) {
+        Schema::table('roots', function (Blueprint $table) {
             $table->dateTime('word_updated_at')->nullable();
         });
     }
