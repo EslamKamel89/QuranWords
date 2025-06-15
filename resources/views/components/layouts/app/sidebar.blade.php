@@ -10,7 +10,7 @@ $isRtl = app()->getLocale() === 'ar';
 
 <body class="flex min-h-screen text-right bg-white dark:bg-zinc-800" x-data="{ show: false }">
     <!-- Sidebar -->
-    <aside class="fixed inset-y-0 right-0 z-30 hidden w-64 h-screen overflow-y-auto transition-all duration-300 ease-in-out bg-white dark:bg-zinc-800 border-e border-zinc-200 dark:border-zinc-700 lg:relative lg:block" :class="{ 'block': show, 'hidden': !show }">
+    <aside class="fixed inset-y-0 right-0 z-30 hidden w-64 h-screen overflow-y-auto transition-all duration-300 ease-in-out bg-white dark:bg-zinc-800 border-e border-zinc-200 dark:border-zinc-700 " :class="{ 'block': show, 'hidden': !show  }">
         <div class="p-4">
             <a href="{{ route('dashboard') }}" class="flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
                 <x-app-logo />
@@ -72,7 +72,7 @@ $isRtl = app()->getLocale() === 'ar';
     </aside>
 
     <!-- Toggle Button -->
-    <button @click="show = !show" class="fixed z-20 p-2 bg-white rounded-md shadow top-4 left-4 dark:bg-zinc-900 lg:hidden">
+    <button @click="show = !show" class="fixed z-20 p-2 bg-white rounded-md shadow top-4 left-4 dark:bg-zinc-900 ">
         <flux:icon.bars-2 x-show="!show" />
         <flux:icon.x-mark x-show="show" />
     </button>
