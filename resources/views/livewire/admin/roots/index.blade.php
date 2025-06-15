@@ -22,7 +22,7 @@ new class extends Component {
             ->where('origin_word', 'like', '%' . $this->search . '%')
             ->orWhere('name', 'like', '%' . $this->search . '%')
             ->withCount('words')
-            ->latest()
+            ->orderByDesc('word_updated_at')
             ->paginate(10);
 
         return [
@@ -58,6 +58,8 @@ new class extends Component {
                     <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">الكلمة الأصلية</th>
                     <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">الاسم</th>
                     <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">عدد الكلمات</th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">وقت التسجيل</th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">اخر تعديل</th>
                     <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">الإجراءات</th>
                 </tr>
             </thead>
@@ -68,6 +70,8 @@ new class extends Component {
                     <td class="px-6 py-4 text-sm text-center text-gray-800 whitespace-nowrap dark:text-gray-200">{{ $root->origin_word }}</td>
                     <td class="px-6 py-4 text-sm text-center text-gray-800 whitespace-nowrap dark:text-gray-200">{{ $root->name }}</td>
                     <td class="px-6 py-4 text-sm text-center text-gray-800 whitespace-nowrap dark:text-gray-200">{{ $root->words_count }}</td>
+                    <td class="px-6 py-4 text-sm text-center text-gray-800 whitespace-nowrap dark:text-gray-200">{{ $root->created_at }}</td>
+                    <td class="px-6 py-4 text-sm text-center text-gray-800 whitespace-nowrap dark:text-gray-200">{{ $root->word_updated_at }}</td>
                     <td class="px-6 py-4 space-x-2 space-x-reverse text-sm font-medium text-center whitespace-nowrap">
                         <a wire:navigate href="{{ route('roots.edit' , ['root'=>$root->id]) }}" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                             تعديل
