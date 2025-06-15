@@ -3,13 +3,28 @@
 use Livewire\Volt\Component;
 use App\Models\Root;
 use Livewire\WithPagination;
+use Spatie\QueryBuilder\QueryBuilder;
+use Livewire\Attributes\Url;
 
 new class extends Component {
     use WithPagination;
 
     public $search = '';
-
-
+    #[Url()]
+    public ?string $sort = '';
+    public array $allowedSort = [
+        'words_count',
+        'created_at',
+        'word_updated_at',
+        'origin_word',
+        'name',
+    ];
+    public int $perPage  = 10;
+    public function mount() {
+        if (!$this->sort) {
+            $this->sort = '-word_updated_at';
+        }
+    }
     public function delete($id) {
         $root = Root::findOrFail($id);
         $root->delete();
@@ -18,16 +33,28 @@ new class extends Component {
     }
 
     public function with() {
-        $roots = Root::query()
+        $roots = QueryBuilder::for(Root::class)
             ->where('origin_word', 'like', '%' . $this->search . '%')
             ->orWhere('name', 'like', '%' . $this->search . '%')
             ->withCount('words')
-            ->orderByDesc('word_updated_at')
-            ->paginate(10);
+            ->allowedSorts($this->allowedSort)
+            ->defaultSort('-word_updated_at')
+            ->paginate($this->perPage);
 
         return [
             'roots' => $roots
         ];
+    }
+    public function sortRoots(string $key) {
+        foreach ($this->allowedSort as $i => $value) {
+            $this->hanldeKeyChange($key, $value);
+        }
+        return $this->redirect(route('roots.index', ['sort' => $key]), true);
+    }
+    protected function hanldeKeyChange(string &$key, string $value) {
+        if ($key == $value) {
+            $key = $this->sort == $value ? '-' . $value : $value;
+        }
     }
 }; ?>
 
@@ -40,8 +67,18 @@ new class extends Component {
     </div>
 
     <!-- Search -->
-    <div class="mb-6">
+    <div class="flex items-center justify-center w-full mb-6 space-x-4">
         <input type="text" wire:model.live.debounce.750="search" placeholder=" الكلمات الرئيسية..." class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm dark:bg-gray-800 dark:border-gray-600 dark:text-white focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <div class="flex flex-col space-y-2 grow-1 shrink-0">
+            <div class="text-xs">عدد العناصر في الصفحة</div>
+            <select wire:model.live="perPage" class="px-2 py-2">
+                <option class="dark:text-black " value="5">5</option>
+                <option class="dark:text-black " value="10">10</option>
+                <option class="dark:text-black " value="20">20</option>
+                <option class="dark:text-black " value="30">30</option>
+                <option class="dark:text-black " value="40">40</option>
+            </select>
+        </div>
     </div>
 
     <!-- Table -->
@@ -55,11 +92,41 @@ new class extends Component {
             <thead class="bg-gray-50 dark:bg-gray-700">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">الرقم</th>
-                    <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">الكلمة الأصلية</th>
-                    <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">الاسم</th>
-                    <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">عدد الكلمات</th>
-                    <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">وقت التسجيل</th>
-                    <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">اخر تعديل</th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">
+                        <div wire:click="sortRoots('origin_word')">
+                            <livewire:admin.shared.sort-icon
+                                direction="{{ $sort == 'origin_word'? 'asc' : ($sort == '-origin_word' ? 'desc' : '') }}"
+                                label="الكلمة الأصلية" />
+                        </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">
+                        <div wire:click="sortRoots('name')">
+                            <livewire:admin.shared.sort-icon
+                                direction="{{ $sort == 'name'? 'asc' : ($sort == '-name' ? 'desc' : '') }}"
+                                label="الاسم" />
+                        </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">
+                        <div wire:click="sortRoots('words_count')">
+                            <livewire:admin.shared.sort-icon
+                                direction="{{ $sort == 'words_count'? 'asc' : ($sort == '-words_count' ? 'desc' : '') }}"
+                                label="عدد الكلمات" />
+                        </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">
+                        <div wire:click="sortRoots('created_at')">
+                            <livewire:admin.shared.sort-icon
+                                direction="{{ $sort == 'created_at'? 'asc' : ($sort == '-created_at' ? 'desc' : '') }}"
+                                label="وقت التسجيل" />
+                        </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">
+                        <div wire:click="sortRoots('word_updated_at')">
+                            <livewire:admin.shared.sort-icon
+                                direction="{{ $sort == 'word_updated_at'? 'asc' : ($sort == '-word_updated_at' ? 'desc' : '') }}"
+                                label="اخر تعديل" />
+                        </div>
+                    </th>
                     <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-300">الإجراءات</th>
                 </tr>
             </thead>
