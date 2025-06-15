@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- *
+ * 
  *
  * @property int $id
  * @property int $root_id
@@ -38,6 +38,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Builder<static>|Word stepOne(string $search)
  * @method static Builder<static>|Word stepThree(string $search)
  * @method static Builder<static>|Word stepTwo(string $search)
+ * @property string|null $word_updated_at
+ * @method static Builder<static>|Word whereWordUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Word extends Model {
@@ -49,6 +51,7 @@ class Word extends Model {
         'surah_id',
         'word',
         'word_tashkeel',
+        'word_updated_at',
     ];
     public function root(): BelongsTo {
         return $this->belongsTo(Root::class);
