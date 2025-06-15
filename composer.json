@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.10.1",
         "livewire/flux": "^2.1.1",
         "livewire/volt": "^1.7.0",
-        "masmerise/livewire-toaster": "^2.8"
+        "masmerise/livewire-toaster": "^2.8",
+        "spatie/laravel-query-builder": "^6.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.15",
