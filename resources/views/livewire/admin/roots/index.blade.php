@@ -25,12 +25,7 @@ new class extends Component {
             $this->sort = '-word_updated_at';
         }
     }
-    public function delete($id) {
-        $root = Root::findOrFail($id);
-        $root->delete();
 
-        session()->flash('message', 'تم حذف الكلمة بنجاح.');
-    }
 
     public function with() {
         $roots = QueryBuilder::for(Root::class)
@@ -55,6 +50,12 @@ new class extends Component {
         if ($key == $value) {
             $key = $this->sort == $value ? '-' . $value : $value;
         }
+    }
+    public function delete($id) {
+        $root = Root::findOrFail($id);
+        $root->delete();
+
+        session()->flash('message', 'تم حذف الكلمة بنجاح.');
     }
 }; ?>
 
@@ -139,13 +140,16 @@ new class extends Component {
                     <td class="px-6 py-4 text-sm text-center text-gray-800 whitespace-nowrap dark:text-gray-200">{{ $root->words_count }}</td>
                     <td class="px-6 py-4 text-sm text-center text-gray-800 whitespace-nowrap dark:text-gray-200">{{ $root->created_at }}</td>
                     <td class="px-6 py-4 text-sm text-center text-gray-800 whitespace-nowrap dark:text-gray-200">{{ $root->word_updated_at }}</td>
-                    <td class="px-6 py-4 space-x-2 space-x-reverse text-sm font-medium text-center whitespace-nowrap">
+                    <td class="px-6 py-4 space-x-2 text-sm font-medium text-center whitespace-nowrap">
                         <a wire:navigate href="{{ route('roots.edit' , ['root'=>$root->id]) }}" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            تعديل
+                            <flux:icon.pencil-square class="size-4" />
                         </a>
                         <button wire:click="delete({{ $root->id }})" wire:confirm="هل أنت متأكد من أنك تريد حذف هذا الجذر؟" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                            حذف
+                            <flux:icon.trash class="size-4" />
                         </button>
+                        <a href="{{ route('roots.show' , ['root'=>$root->id]) }}" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                            <flux:icon.information-circle class="size-4" />
+                        </a>
                     </td>
                 </tr>
                 @empty

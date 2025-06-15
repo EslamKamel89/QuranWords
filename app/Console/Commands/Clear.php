@@ -33,14 +33,14 @@ class Clear extends Command {
         $this->call('view:clear');
         $this->call('event:clear');
         $this->call('optimize:clear');
-        $this->info('Running composer dump-autoload...');
-        $process = new Process(['composer', 'dump-autoload']);
-        $process->setTimeout(300);
-        $process->run();
+        // $this->info('Running composer dump-autoload...');
+        // $process = new Process(['composer', 'dump-autoload']);
+        // $process->setTimeout(300);
+        // $process->run();
 
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
-        }
+        // if (!$process->isSuccessful()) {
+        //     throw new ProcessFailedException($process);
+        // }
 
         $this->info('clear success');
     }

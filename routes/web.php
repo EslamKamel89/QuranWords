@@ -28,13 +28,13 @@ Route::middleware(['auth'])->group(function () {
         ->name('roots.create');
     Volt::route('/admin/roots/{root}/edit', 'admin.roots.edit')
         ->name('roots.edit');
+    Volt::route('/admin/roots/{root}', 'admin.root.index')
+        ->name('roots.show');
 });
 
-// Route::get('/test', function () {
-//     $word = new App\Models\Word;
-//     $observerClass = App\Observers\WordObserver::class;
-
-//     dd($word->getObservableEvents(), array_search($observerClass, $word->getGlobalObservers()));
-// });
+Route::get('/test', function () {
+    $root = Root::with(['words.verse', 'words.surah'])->where('id', 30)->first();
+    return $root;
+});
 
 require __DIR__ . '/auth.php';
