@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $origin_word
@@ -40,11 +40,15 @@ class Root extends Model {
         return $this->hasMany(Word::class);
     }
     public function scopeSearch(Builder $query, string $search) {
-        $query->where('origin_word', 'LIKE', "%{$search}%");
-        $query->orWhere('name', 'LIKE', "%{$search}%");
+        //   $query->where('origin_word', 'LIKE', "%{$search}%");
+        $query->where('origin_word',  $search);
+        // $query->orWhere('name', 'LIKE', "%{$search}%");
+        $query->orWhere('name', $search);
         $query->orWhereHas('words', function (Builder $q) use ($search) {
             $q->where('word', 'LIKE', "%{$search}%");
+            //  $q->where('word',  $search);
             $q->orWhere('word_tashkeel', 'LIKE', "%{$search}%");
+            // $q->orWhere('word_tashkeel' ,$search);
         });
     }
 }

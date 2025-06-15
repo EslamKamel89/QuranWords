@@ -14,13 +14,17 @@ class WordsSearchController extends Controller {
      * Handle the incoming request.
      */
     public function __invoke(Request $request) {
-
+        if ($request->has('wordId')) {
+            return   $this->getWordQueryInstance()->where('id', $request->get('wordId'))
+                ->paginate($this->paginationLimit);
+        }
         if (!$request->has('search')) {
             return   $this->getWordQueryInstance()->paginate($this->paginationLimit);
         }
         $search = $request->get('search');
 
         if ($this->getWordQueryInstance()->stepOne($search)->count()) {
+            pr::log($this->getWordQueryInstance()->stepOne($search)->toRawSql());
             $stepOne = $this->getWordQueryInstance()->stepOne($search)->paginate($this->paginationLimit);
             // pr::log('Step one triggered');
             return $stepOne;
