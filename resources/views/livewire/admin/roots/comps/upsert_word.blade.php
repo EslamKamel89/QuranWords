@@ -16,6 +16,7 @@ new class extends Component {
     public int $wordId;
     public int $index;
     public function mount() {
+        pr::log($this->rootId, 'rootId');
     }
     #[On('surah-verse-selector_update.{wordId}')]
     public function surahVerseListener(array $payload) {

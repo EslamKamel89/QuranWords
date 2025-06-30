@@ -1,26 +1,35 @@
 <?php
 
 use App\Helpers\pr;
+use App\Models\Root;
 use Livewire\Volt\Component;
 use App\Models\Surah;
 use App\Models\Verse;
 use App\Models\Word;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 use Masmerise\Toaster\Toaster;
 use Masmerise\Toaster\Toastable;
 
 new class extends Component {
     use Toastable;
-    public \App\Models\Root $root;
+    public Root $root;
     public $origin_word;
     public $name;
     public $words = [];
+    public $roots;
+    public ?int $updatedRoot = null;
 
     public function mount() {
+        pr::log($this->root->id, 'rootId in the edit page');
+        $this->roots = Root::select(['id', 'name', 'origin_word'])
+            ->latest('word_updated_at')
+            ->get();
         $this->root->load(['words', 'words.verse:id,surah_id']);
         $this->origin_word = $this->root->origin_word;
         $this->name = $this->root->name;
         $this->initAndSortWords();
+        $this->updatedRoot = $this->root->id;
     }
     public function initAndSortWords() {
         $this->words = $this->root->words
@@ -86,6 +95,16 @@ new class extends Component {
             'surahs' => Surah::Select(['id', 'name'])->get(),
         ];
     }
+
+    public function changeRoot() {
+        DB::table('words')
+            ->where([
+                'root_id' => $this->root->id,
+            ])->update([
+                'root_id' => $this->updatedRoot,
+            ]);
+        return redirect()->route('roots.edit', ['root' => $this->root->id]);
+    }
 }; ?>
 
 <div class="w-full px-4 py-8 mx-auto">
@@ -102,24 +121,52 @@ new class extends Component {
     </div>
     @enderror
     <div class="space-y-6">
-        <!-- Origin Word -->
-        <div>
-            <label for="origin_word" class="block text-sm font-medium text-gray-700 dark:text-gray-300">الكلمة الأصلية</label>
-            <input type="text" wire:model="origin_word" id="origin_word" class="block w-full px-4 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-zinc-900 dark:border-zinc-700 dark:text-white sm:text-sm">
-            @error('origin_word') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
-        </div>
+        <div x-data="{editMainInfo:true}">
+            <ul class="flex flex-wrap mb-3 text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
+                <li class="me-2" @click="editMainInfo = true">
+                    <div
+                        class="inline-block p-4 rounded-t-lg cursor-pointer hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+                        x-bind:class="{
+                    'text-blue-600 border border-blue-500 dark:text-blue-500':editMainInfo ,
+                    }">تعديل المعلومات الرئيسية</div>
+                </li>
+                <li class="me-2" @click="editMainInfo = false">
+                    <div
+                        class="inline-block p-4 rounded-t-lg cursor-pointer hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+                        x-bind:class="{
+                    'text-blue-600 border border-blue-500 dark:text-blue-500':!editMainInfo ,
+                    }">تغيير الكلمة الرئيسية</div>
+                </li>
+            </ul>
+            <div x-show="editMainInfo">
+                <!-- Origin Word -->
+                <div>
+                    <label for="origin_word" class="block text-sm font-medium text-gray-700 dark:text-gray-300">الكلمة الأصلية</label>
+                    <input type="text" wire:model="origin_word" id="origin_word" class="block w-full px-4 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-zinc-900 dark:border-zinc-700 dark:text-white sm:text-sm">
+                    @error('origin_word') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                </div>
+                <!-- Name -->
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">الاسم</label>
+                    <input type="text" wire:model="name" id="name" class="block w-full px-4 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-zinc-900 dark:border-zinc-700 dark:text-white sm:text-sm">
+                    @error('name') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                </div>
+                <!-- Submit Button -->
+                <div class="flex justify-end w-full py-5">
+                    <x-shared.button wire:click="save" label=" احفظ الكلمة الرئيسية" />
 
-        <!-- Name -->
-        <div>
-            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">الاسم</label>
-            <input type="text" wire:model="name" id="name" class="block w-full px-4 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-zinc-900 dark:border-zinc-700 dark:text-white sm:text-sm">
-            @error('name') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
-        </div>
-        <!-- Submit Button -->
-        <div class="flex justify-end w-full py-5">
-            <button type="button" wire:click="save" class="px-2 py-1 text-sm text-green-600 bg-green-100 border rounded-lg shadow hover:text-green-800 hover:scale-105 hover:shadow-lg">
-                احفظ الكلمة الرئيسية
-            </button>
+                </div>
+            </div>
+            <div x-show="!editMainInfo">
+                <flux:select wire:model.live="updatedRoot" placeholder="اختر الكلمة الأصلية">
+                    @foreach ($roots as $rootModel )
+                    <flux:select.option :key="'root-selector-'.$rootModel->id" :value="$rootModel->id">{{ $rootModel->origin_word.'-'.$rootModel->name }}</flux:select.option>
+                    @endforeach
+                </flux:select>
+                <div class="flex justify-end w-full mt-4" wire:click="changeRoot()">
+                    <flux:button type="button" variant="primary">احفظ</flux:button>
+                </div>
+            </div>
         </div>
         <!-- Words Repeater -->
         <div class="mt-6">
