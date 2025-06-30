@@ -40,7 +40,7 @@ new class extends Component {
         ];
     }
     public function selectSurah(array $surah) {
-        dd($surah);
+        // dd($surah);
         $this->selectedSurah = $surah;
         $this->searchSurah = $surah['name'];
         $this->verses = Verse::select(['id', 'surah_id', 'text', 'verse_number'])
