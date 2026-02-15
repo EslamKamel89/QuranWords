@@ -34,7 +34,7 @@ class VerseSearchController extends Controller {
             ->with(['words.verse.surah'])->first();
         $result = collect([]);
         $root->words->each(function ($word) use (&$result) {
-            $result->push($word->verse);
+            $result->push([...$word->verse->toArray(), 'word_id' => $word->id, 'root_id' => $word->root_id, 'word_tashkeel' => $word->word_tashkeel]);
         });
         return $result;
     }

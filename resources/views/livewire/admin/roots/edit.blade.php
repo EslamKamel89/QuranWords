@@ -21,7 +21,7 @@ new class extends Component {
     public ?int $updatedRoot = null;
 
     public function mount() {
-        pr::log($this->root->id, 'rootId in the edit page');
+        // pr::log($this->root->id, 'rootId in the edit page');
         $this->roots = Root::select(['id', 'name', 'origin_word'])
             ->latest('word_updated_at')
             ->get();
@@ -163,7 +163,7 @@ new class extends Component {
                     <flux:select.option :key="'root-selector-'.$rootModel->id" :value="$rootModel->id">{{ $rootModel->origin_word.'-'.$rootModel->name }}</flux:select.option>
                     @endforeach
                 </flux:select>
-                <div class="flex justify-end w-full mt-4" wire:click="changeRoot()">
+                <div class="flex justify-end w-full mt-4" wire:click="changeRoot()" wire:confirm="تنبيه: هذا الإجراء لا رجعة فيه">
                     <flux:button type="button" variant="primary">احفظ</flux:button>
                 </div>
             </div>
