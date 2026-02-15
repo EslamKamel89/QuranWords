@@ -3,6 +3,9 @@
 use App\Models\Root;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Livewire\Admin\Categories\Index as CategoriesIndex;
+use App\Livewire\Admin\Categories\Create as CategoriesCreate;
+use App\Livewire\Admin\Categories\Edit as CategoriesEdit;
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
@@ -30,6 +33,11 @@ Route::middleware(['auth'])->group(function () {
         ->name('roots.edit');
     Volt::route('/admin/roots/{root}', 'admin.root.index')
         ->name('roots.show');
+});
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/categories', CategoriesIndex::class)->name('categories.index');
+    Route::get('/categories/create', CategoriesCreate::class)->name('categories.create');
+    Route::get('/categories/{category}/edit', CategoriesEdit::class)->name('categories.edit');
 });
 
 Route::get('/test', function () {
