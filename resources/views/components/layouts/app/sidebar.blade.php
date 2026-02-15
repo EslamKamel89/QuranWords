@@ -63,7 +63,8 @@ $isRtl = app()->getLocale() === 'ar';
 
                 <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>الإحصائيات</flux:navlist.item>
                 <flux:navlist.item icon="book-open" :href="route('roots.index')" :current="request()->routeIs('roots.index')" wire:navigate>الكلمات الرئيسية</flux:navlist.item>
-                <flux:navlist.item icon="book-open" :href="route('admin.categories.index')" :current="request()->routeIs('admin.categories.index')" wire:navigate> الاقسام</flux:navlist.item>
+                <flux:navlist.item icon="tag" :href="route('admin.categories.index')" :current="request()->routeIs('admin.categories.index')" wire:navigate> الاقسام</flux:navlist.item>
+                <flux:navlist.item icon="question-mark-circle" :href="route('admin.questions.index')" :current="request()->routeIs('admin.questions.index')" wire:navigate> الأسئلة</flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 

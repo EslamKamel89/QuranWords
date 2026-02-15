@@ -24566,6 +24566,63 @@ namespace App\Livewire\Admin\Categories {
             }
     }
 
+namespace App\Livewire\Admin\Questions {
+    /**
+     * 
+     *
+     */
+    class Index {
+        /**
+         * 
+         *
+         * @see \Flux\FluxManager::bootModal()
+         * @param mixed $name
+         * @static 
+         */
+        public static function modal($name)
+        {
+            return \App\Livewire\Admin\Questions\Index::modal($name);
+        }
+
+            }
+    /**
+     * 
+     *
+     */
+    class Create {
+        /**
+         * 
+         *
+         * @see \Flux\FluxManager::bootModal()
+         * @param mixed $name
+         * @static 
+         */
+        public static function modal($name)
+        {
+            return \App\Livewire\Admin\Questions\Create::modal($name);
+        }
+
+            }
+    /**
+     * 
+     *
+     */
+    class Edit {
+        /**
+         * 
+         *
+         * @see \Flux\FluxManager::bootModal()
+         * @param mixed $name
+         * @static 
+         */
+        public static function modal($name)
+        {
+            return \App\Livewire\Admin\Questions\Edit::modal($name);
+        }
+
+            }
+    }
+
 
 namespace  {
     class App extends \Illuminate\Support\Facades\App {}
