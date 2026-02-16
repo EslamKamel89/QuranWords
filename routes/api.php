@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\QuranSearchController;
 use App\Http\Controllers\Api\RootsIndexController;
 use App\Http\Controllers\Api\RootsSearchController;
 use App\Http\Controllers\Api\VerseSearchController;
@@ -11,3 +12,4 @@ Route::get('/roots', RootsSearchController::class);
 Route::get('/allroots', RootsIndexController::class);
 Route::get('/words', WordsSearchController::class);
 Route::get('/verses', VerseSearchController::class);
+Route::get('/quran-search', [QuranSearchController::class, 'search']);
