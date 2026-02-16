@@ -16,6 +16,88 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Question> $questions
+ * @property-read int|null $questions_count
+ * @method static \Database\Factories\CategoryFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereUpdatedAt($value)
+ */
+	class Category extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int|null $category_id
+ * @property string|null $question
+ * @property string|null $answer
+ * @property string|null $keywords
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Category|null $category
+ * @method static \Database\Factories\QuestionFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Question newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Question newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Question query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Question whereAnswer($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Question whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Question whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Question whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Question whereKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Question whereQuestion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Question whereUpdatedAt($value)
+ */
+	class Question extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuranAyah newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuranAyah newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuranAyah query()
+ */
+	class QuranAyah extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuranToken newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuranToken newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuranToken query()
+ */
+	class QuranToken extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuranUthmaniToken newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuranUthmaniToken newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuranUthmaniToken query()
+ */
+	class QuranUthmaniToken extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $origin_word
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
