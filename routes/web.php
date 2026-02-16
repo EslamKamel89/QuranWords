@@ -54,7 +54,9 @@ Route::get('/test', function () {
 });
 Route::get('/artisan', function () {
     Artisan::call('migrate');
-
+    Artisan::call('db:seed', [
+        '--class' => \Database\Seeders\NewQuranSeeder::class
+    ]);
     return response()->json(['message' => 'Migration executed!']);
 });
 

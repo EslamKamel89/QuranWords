@@ -31,7 +31,7 @@ return new class extends Migration {
                 'token_uthmani',
                 'token_uthmani_norm',
                 'token_plain_norm'
-            ]);
+            ], 'uthmani_tokens_search_idx');
 
             $table->index(['quran_ayah_id', 'pos']);
         });
