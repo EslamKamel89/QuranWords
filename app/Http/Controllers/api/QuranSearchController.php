@@ -11,9 +11,11 @@ class QuranSearchController extends Controller {
         $query = $request->get('q');
         if (!$query) {
             return response()
-                ->json(['data' => [], 'count' => 0, 'message' => 'Query is empty']);
+                ->json([]);
         }
-        $results = QuranUthmaniToken::with('ayah')
+        $results = QuranUthmaniToken
+            ::select(['id', 'quran_ayah_id', 'old_ayah_id', 'token_uthmani', 'root'])
+            ->with('ayah:id,global_ayah,surah_no,ayah_no,page,juz,sajda,text_uthmani')
             ->where(function ($q) use ($query) {
                 $q->where('token_uthmani', 'LIKE', "%{$query}%")
                     ->orWhere('token_uthmani_norm', 'LIKE', "%{$query}%")
@@ -21,7 +23,7 @@ class QuranSearchController extends Controller {
                     ->orWhere('root', 'LIKE', "%{$query}%");
             })->get();
         return response()->json(
-            ['data' => $results, 'count' => $results->count(), 'message' => 'success']
+            $results
         );
     }
 }
