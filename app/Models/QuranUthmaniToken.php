@@ -14,6 +14,7 @@ class QuranUthmaniToken extends Model {
         'token_uthmani',
         'token_uthmani_norm',
         'token_plain_norm',
+        'token_simple',
         'root',
         'align_tag',
     ];

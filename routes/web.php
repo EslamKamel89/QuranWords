@@ -9,6 +9,7 @@ use App\Livewire\Admin\Categories\Edit as CategoriesEdit;
 use App\Livewire\Admin\Questions\Index as QuestionsIndex;
 use App\Livewire\Admin\Questions\Create as QuestionsCreate;
 use App\Livewire\Admin\Questions\Edit as QuestionsEdit;
+use App\Models\QuranUthmaniToken;
 use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
@@ -54,9 +55,21 @@ Route::get('/test', function () {
 });
 Route::get('/artisan', function () {
     Artisan::call('migrate');
-    Artisan::call('db:seed', [
-        '--class' => \Database\Seeders\NewQuranSeeder::class
-    ]);
+    // Artisan::call('db:seed', [
+    //     '--class' => \Database\Seeders\NewQuranSeeder::class
+    // ]);
+    $tokens =  QuranUthmaniToken::chunk(
+        100,
+        function ($words) {
+            foreach ($words as $token) {
+                $token->update([
+                    'token_simple' => $token->token_plain_norm
+                ]);
+            }
+        }
+    );
+
+
     return response()->json(['message' => 'Migration executed!']);
 });
 
